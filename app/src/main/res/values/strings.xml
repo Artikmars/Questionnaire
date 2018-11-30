@@ -1,0 +1,18 @@
+<resources>
+    <string name="questionnaire">Questionnaire</string>
+    <string name="first_question">Do you enjoy working in a team?</string>
+    <string name="second_question">How long have you been working with Java?</string>
+    <string name="third_question">How do you feel about automated tests?</string>
+    <string name="answer_1_1">Teamwork is in my blood</string>
+    <string name="answer_1_2">Yes, I do</string>
+    <string name="answer_1_3">I prefer to work alone</string>
+    <string name="answer_2_1">Never</string>
+    <string name="answer_2_2">Less than 1 year</string>
+    <string name="answer_2_3">Less than 2 years</string>
+    <string name="answer_2_4">More than 3 years</string>
+    <string name="answer_3_1">Mandatory</string>
+    <string name="answer_3_2">Waste of time</string>
+    <string name="answer_4_1">Unfortunately, we don’t match!</string>
+    <string name="answer_4_2">That looks good!</string>
+    <string name="answer_4_3">Excellent!</string>
+</resources>
