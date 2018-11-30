@@ -1,5 +1,6 @@
 package com.artamonov.questionnaire;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,11 +18,15 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioButton3;
     RadioButton radioButton4;
     TextView tvQuestion;
-    Button bPrevious;
-    Button bNext;
+    Button bRetry;
 
+    /**
+     * State indicates the question position where a user is located right now [1..3]
+     */
     Integer state = 1;
-    Integer grade = 0;
+
+
+    Integer score = 0;
 
 
     @Override
@@ -36,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         radioButton4 = findViewById(R.id.answer4);
         radioButton4 = findViewById(R.id.answer4);
         tvQuestion = findViewById(R.id.question);
-        bPrevious = findViewById(R.id.previous);
-        bNext = findViewById(R.id.next);
+        bRetry = findViewById(R.id.retry);
         radioButton4.setVisibility(View.INVISIBLE);
 
         radioButton1.setText(getResources().getString(R.string.answer_1_1));
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.answer1:
                         switch (state) {
                             case 1:
-                                grade = grade + 5;
+                                score = score + 5;
                                 state++;
                                 radioButton1.setText(getResources().getString(R.string.answer_2_1));
                                 radioButton2.setText(getResources().getString(R.string.answer_2_2));
@@ -76,21 +80,17 @@ public class MainActivity extends AppCompatActivity {
                                 tvQuestion.setText(getResources().getString(R.string.third_question));
 
                             case 3:
-                                grade = grade + 3;
-                                state++;
-                                radioButton1.setText(getResources().getString(R.string.answer_2_1));
-                                radioButton2.setText(getResources().getString(R.string.answer_2_2));
-                                radioButton3.setText(getResources().getString(R.string.answer_2_3));
-                                radioButton4.setText(getResources().getString(R.string.answer_2_4));
-                                radioButton4.setVisibility(View.VISIBLE);
-                                tvQuestion.setText(getResources().getString(R.string.second_question));
+                                score = score + 3;
+                                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                                intent.putExtra("score", score);
+                                startActivity(intent);
                         }
 
                         break;
                     case R.id.answer2:
                         switch (state) {
                             case 1:
-                                grade = grade + 3;
+                                score = score + 3;
                                 state++;
                                 radioButton1.setText(getResources().getString(R.string.answer_2_1));
                                 radioButton2.setText(getResources().getString(R.string.answer_2_2));
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                                 tvQuestion.setText(getResources().getString(R.string.second_question));
                                 break;
                             case 2:
-                                grade = grade + 1;
+                                score = score + 1;
                                 state++;
                                 radioButton1.setText(getResources().getString(R.string.answer_3_1));
                                 radioButton2.setText(getResources().getString(R.string.answer_3_2));
@@ -109,13 +109,9 @@ public class MainActivity extends AppCompatActivity {
                                 tvQuestion.setText(getResources().getString(R.string.third_question));
                                 break;
                             case 3:
-                                state++;
-                                radioButton1.setText(getResources().getString(R.string.answer_2_1));
-                                radioButton2.setText(getResources().getString(R.string.answer_2_2));
-                                radioButton3.setText(getResources().getString(R.string.answer_2_3));
-                                radioButton4.setText(getResources().getString(R.string.answer_2_4));
-                                radioButton4.setVisibility(View.VISIBLE);
-                                tvQuestion.setText(getResources().getString(R.string.second_question));
+                                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                                intent.putExtra("score", score);
+                                startActivity(intent);
                                 break;
                         }
                     case R.id.answer3:
@@ -130,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                                 tvQuestion.setText(getResources().getString(R.string.second_question));
                                 break;
                             case 2:
-                                grade = grade + 3;
+                                score = score + 3;
                                 state++;
                                 radioButton1.setText(getResources().getString(R.string.answer_3_1));
                                 radioButton2.setText(getResources().getString(R.string.answer_3_2));
@@ -138,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
                                 radioButton4.setVisibility(View.GONE);
                                 tvQuestion.setText(getResources().getString(R.string.third_question));
                                 break;
-                            case 3:
+                            default:
                                 break;
                         }
                     case R.id.answer4:
                         switch (state) {
                             case 1:
-                                grade = grade + 5;
+                                score = score + 5;
                                 state++;
                                 radioButton1.setText(getResources().getString(R.string.answer_2_1));
                                 radioButton2.setText(getResources().getString(R.string.answer_2_2));
@@ -154,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                                 tvQuestion.setText(getResources().getString(R.string.second_question));
                                 break;
                             case 2:
-                                grade = grade + 5;
+                                score = score + 5;
                                 state++;
                                 radioButton1.setText(getResources().getString(R.string.answer_3_1));
                                 radioButton2.setText(getResources().getString(R.string.answer_3_2));
@@ -162,8 +158,6 @@ public class MainActivity extends AppCompatActivity {
                                 radioButton4.setVisibility(View.GONE);
                                 tvQuestion.setText(getResources().getString(R.string.third_question));
 
-                            case 3:
-                                break;
                             default:
                                 break;
                         }
@@ -175,13 +169,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void onPrevious(View view) {
-        if (state != 1) {
-            state = state - 1;
-        }
-
-    }
-
-    public void onNext(View view) {
+    public void onRetry(View view) {
+        state = 1;
+        score = 0;
+        radioButton1.setText(getResources().getString(R.string.answer_1_1));
+        radioButton2.setText(getResources().getString(R.string.answer_1_2));
+        radioButton3.setText(getResources().getString(R.string.answer_1_3));
+        radioButton3.setVisibility(View.VISIBLE);
+        radioButton4.setVisibility(View.VISIBLE);
+        tvQuestion.setText(getResources().getString(R.string.first_question));
     }
 }

@@ -7,32 +7,20 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/previous"
+        android:id="@+id/retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onPrevious"
-        android:text="@string/previous"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onRetry"
+        android:text="@string/retry"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:onClick="onNext"
-        android:text="@string/next"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
         android:id="@+id/question"
-        style="@style/QuestionDescription"
+        style="@style/LabelDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -45,9 +33,9 @@
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question">
 
@@ -68,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
             android:layout_marginLeft="76dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="8dp"
             android:text="@string/undefined"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question" />
@@ -79,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
             android:layout_marginLeft="76dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="@string/undefined"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/answer2" />

@@ -13,11 +13,10 @@
     <string name="answer_2_4">More than 3 years</string>
     <string name="answer_3_1">Mandatory</string>
     <string name="answer_3_2">Waste of time</string>
-    <string name="answer_4_1">Unfortunately, we don’t match!</string>
-    <string name="answer_4_2">That looks good!</string>
-    <string name="answer_4_3">Excellent!</string>
+    <string name="result_1">Unfortunately, we don’t match!</string>
+    <string name="result_2">That looks good!</string>
+    <string name="result_3">Excellent!</string>
 
-    <string name="previous">Previous</string>
-    <string name="next">Next</string>
+    <string name="retry">Retry</string>
     <string name="undefined">Undefined</string>
 </resources>
