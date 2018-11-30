@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Questionnaire</string>
     <string name="questionnaire">Questionnaire</string>
     <string name="first_question">Do you enjoy working in a team?</string>
     <string name="second_question">How long have you been working with Java?</string>
@@ -15,4 +16,8 @@
     <string name="answer_4_1">Unfortunately, we don’t match!</string>
     <string name="answer_4_2">That looks good!</string>
     <string name="answer_4_3">Excellent!</string>
+
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="undefined">Undefined</string>
 </resources>
