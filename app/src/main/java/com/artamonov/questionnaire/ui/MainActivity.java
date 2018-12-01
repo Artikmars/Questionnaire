@@ -1,4 +1,4 @@
-package com.artamonov.questionnaire;
+package com.artamonov.questionnaire.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.artamonov.questionnaire.R;
+import com.artamonov.questionnaire.ui.contract.MainContract;
+import com.artamonov.questionnaire.ui.presenter.MainPresenter;
+
+public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
     RadioGroup radioGroup;
     RadioButton radioButton1;
@@ -18,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioButton4;
     TextView tvQuestion;
     Button bRetry;
+
+    MainContract.MainPresenter mainPresenter;
 
     /**
      * State indicates the question position where a user is located right now [1..3]
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mainPresenter = new MainPresenter(this);
         radioGroup = findViewById(R.id.radioGroup);
         radioButton1 = findViewById(R.id.answer1);
         radioButton2 = findViewById(R.id.answer2);
@@ -50,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onRetry(View view) {
+        mainPresenter.onRetryClicked();
+    }
+
+    public void onNext(View view) {
+
+        mainPresenter.onNextClicked();
+    }
+
+    @Override
+    public void onRetry() {
         questionState = 1;
         score = 0;
         radioButton1.setText(getResources().getString(R.string.answer_1_1));
@@ -61,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         tvQuestion.setText(getResources().getString(R.string.first_question));
     }
 
-    public void onNext(View view) {
-
+    @Override
+    public void onNext() {
         switch (questionState) {
             case 1:
                 questionState++;
